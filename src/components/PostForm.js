@@ -1,28 +1,20 @@
 import React, { useState } from 'react'
+import { connect } from 'react-redux'
+import { createPost } from '../actions/postActions'
 
-const PostForm = () => {
+const PostForm = ({ createPost }) => {
   const [title, setTitle] = useState('')
   const [body, setBody] = useState('')
 
   const onSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     const post = {
       title,
       body
     }
 
-    const res = await fetch('http://jsonplaceholder.typicode.com/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(post)
-    })
-
-    const data = await res.json()
-
-    console.log(data)
+    createPost(post)
   }
 
   return (
@@ -47,4 +39,4 @@ const PostForm = () => {
   )
 }
 
-export default PostForm
+export default connect(null, { createPost })(PostForm)
