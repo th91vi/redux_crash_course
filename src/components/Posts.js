@@ -6,7 +6,6 @@ const Posts = ({ posts, fetchPosts }) => {
   useEffect(() => {
     fetchPosts()
   }, [])
-  console.log(posts)
   return (
     <div>
       <h1>Posts</h1>
