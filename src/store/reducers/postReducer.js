@@ -14,9 +14,9 @@ export default function (state = initialState, action) {
       }
     case NEW_POST:
       return {
-        ...state,
+        items: [action.payload, ...state.items],
         item: action.payload
-      }
+      };
     default:
       return state
   }
